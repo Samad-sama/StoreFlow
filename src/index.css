@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Apple macOS Light Mode Tokens */
+    --background: 240 5% 96.5%; /* #F5F5F7 - Apple System Window Canvas */
+    --foreground: 240 6% 10%; /* #1D1D1F - Apple Dark Charcoal Typography */
+    
+    --card: 0 0% 100%; /* Pure White Card Elevation */
+    --card-foreground: 240 6% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+    
+    /* Apple Signature Blue: #0071E3 */
+    --primary: 210 100% 44.5%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 4% 92%; /* #EBEBF0 Apple System Fill */
+    --secondary-foreground: 240 6% 12%;
+    
+    --muted: 240 5% 94%;
+    --muted-foreground: 240 4% 46%; /* #6E6E73 Apple Secondary Label */
+    
+    --accent: 210 100% 96%;
+    --accent-foreground: 210 100% 40%;
+    
+    --destructive: 355 86% 56%; /* #FF3B30 Apple SF Red */
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 138 60% 44%; /* #34C759 Apple SF Green */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 35 100% 50%; /* #FF9500 Apple SF Orange */
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 240 6% 89%; /* Hairline separator */
+    --input: 240 6% 89%;
+    --ring: 210 100% 45%;
+    
+    --radius: 0.875rem; /* 14px continuous Apple squircle */
+    
+    /* Apple Sidebar Material */
+    --sidebar: 240 5% 95%; /* #ECECEE subtle translucent feel */
+    --sidebar-foreground: 240 6% 20%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-accent: 210 100% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    /* Apple macOS Dark Mode Tokens */
+    --background: 240 4% 9%; /* #161618 macOS Deep Dark */
+    --foreground: 0 0% 96%; /* #F5F5F7 */
+    
+    --card: 240 4% 13%; /* #212124 Elevated Dark Surface */
+    --card-foreground: 0 0% 96%;
+    
+    --popover: 240 4% 14%;
+    --popover-foreground: 0 0% 96%;
+    
+    /* Apple Dark Tint Blue: #0A84FF */
+    --primary: 211 100% 52%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 4% 18%;
+    --secondary-foreground: 0 0% 96%;
+    
+    --muted: 240 4% 17%;
+    --muted-foreground: 240 4% 64%; /* #98989D Apple Dark Secondary Label */
+    
+    --accent: 211 100% 20%;
+    --accent-foreground: 211 100% 70%;
+    
+    --destructive: 355 86% 56%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --success: 138 60% 44%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 35 100% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --border: 240 4% 20%;
+    --input: 240 4% 20%;
+    --ring: 211 100% 52%;
+    
+    --sidebar: 240 4% 11%; /* #1C1C1E macOS Dark Sidebar */
+    --sidebar-foreground: 240 4% 88%;
+    --sidebar-border: 240 4% 17%;
+    --sidebar-accent: 211 100% 52%;
+    --sidebar-accent-foreground: 0 0% 100%;
+  }
+
+  /* Emerald Business Theme */
+  .theme-emerald {
+    --primary: 158 64% 38%; /* #059669 */
+    --primary-foreground: 0 0% 100%;
+    --ring: 158 64% 38%;
+    --sidebar-accent: 158 64% 38%;
+  }
+
+  /* Royal Indigo Theme */
+  .theme-indigo {
+    --primary: 243 75% 59%; /* #4F46E5 */
+    --primary-foreground: 0 0% 100%;
+    --ring: 243 75% 59%;
+    --sidebar-accent: 243 75% 59%;
+  }
+
+  /* Warm Amber Theme */
+  .theme-amber {
+    --primary: 38 92% 50%; /* #D97706 */
+    --primary-foreground: 0 0% 100%;
+    --ring: 38 92% 50%;
+    --sidebar-accent: 38 92% 50%;
+  }
+
+  /* OLED Pitch Black Theme */
+  .theme-midnight.dark {
+    --background: 0 0% 0%; /* Pure pitch black */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 7%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --sidebar: 0 0% 4%;
+    --sidebar-border: 0 0% 13%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Font Scale Modifiers */
+  html[data-font-scale="large"] {
+    font-size: 17px;
+  }
+  html[data-font-scale="xlarge"] {
+    font-size: 18.5px;
+  }
+
+  body {
+    @apply bg-background text-foreground text-sm;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  }
+
+  /* When RTL (Arabic), switch to high-end IBM Plex Sans Arabic typography */
+  [dir="rtl"], [dir="rtl"] body {
+    font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'SF Arabic', system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* Apple-style Tabular numbers for financial tables */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Ultra-minimal macOS thin scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(140, 140, 145, 0.22);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(140, 140, 145, 0.4);
+  }
+}
+
+/* Apple Card Elevation & Continuous Curves */
+.apple-card {
+  @apply bg-card border border-black/[0.05] dark:border-white/[0.07] rounded-2xl shadow-apple-card;
+}
+
+.apple-card-hover {
+  @apply transition-all duration-200 hover:shadow-apple-hover hover:-translate-y-0.5;
+}
+
+/* Apple Segmented Control / Pill Container */
+.apple-segmented {
+  @apply bg-black/[0.04] dark:bg-white/[0.06] p-1 rounded-xl flex items-center gap-1 border border-black/[0.03] dark:border-white/[0.04];
+}
+
+/* Apple Buttons - Enlarged and comfortable touch/click targets */
+.apple-btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:opacity-95 text-primary-foreground rounded-xl text-sm font-bold shadow-xs active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.apple-btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.07] dark:hover:bg-white/[0.09] text-foreground rounded-xl text-sm font-semibold active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.apple-btn-destructive {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-red-500/10 hover:bg-red-500/15 text-red-600 dark:text-red-400 rounded-xl text-sm font-bold active:scale-[0.98] transition-all disabled:opacity-50;
+}
+
+/* Apple Inset Form Controls - Enlarged and highly legible */
+.apple-input {
+  @apply px-4 py-2.5 bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08] focus:border-primary focus:bg-card focus:ring-4 focus:ring-primary/15 rounded-xl text-sm font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/60;
+}
+
+.apple-select {
+  @apply px-4 py-2.5 bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.05] dark:hover:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.08] focus:border-primary focus:bg-card focus:ring-4 focus:ring-primary/15 rounded-xl text-sm font-medium text-foreground outline-none transition-all cursor-pointer;
+}
+
+/* Apple Badges */
+.apple-badge {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tabular-nums;
+}
+.apple-badge-blue {
+  @apply bg-[#0071E3]/10 text-[#0071E3] border border-[#0071E3]/20;
+}
+.apple-badge-green {
+  @apply bg-[#34C759]/10 text-[#248A3D] dark:text-[#30D158] border border-[#34C759]/20;
+}
+.apple-badge-orange {
+  @apply bg-[#FF9500]/10 text-[#C96B00] dark:text-[#FF9F0A] border border-[#FF9500]/20;
+}
+.apple-badge-red {
+  @apply bg-[#FF3B30]/10 text-[#D70015] dark:text-[#FF453A] border border-[#FF3B30]/20;
+}
+.apple-badge-gray {
+  @apply bg-black/[0.05] dark:bg-white/[0.08] text-muted-foreground border border-black/[0.04] dark:border-white/[0.06];
+}
+
+/* Apple Keyboard Badge */
+.apple-kbd {
+  @apply inline-flex items-center px-1.5 py-0.5 text-[11px] font-mono font-medium text-muted-foreground bg-black/[0.05] dark:bg-white/[0.08] rounded-md border border-black/[0.06] dark:border-white/[0.08] shadow-[0_1px_0_rgba(0,0,0,0.06)];
+}
+
+/* Apple Glass / Frosted Toolbar */
+.apple-frosted {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
